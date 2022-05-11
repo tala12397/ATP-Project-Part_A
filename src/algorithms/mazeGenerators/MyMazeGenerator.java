@@ -52,7 +52,7 @@ public class MyMazeGenerator extends AMazeGenerator {
                         break;
                     case 2: // Right
                         // Whether 2 cells to the right is out or not
-                        if (c + 2 >= maze.maze[0].length) {
+                        if (c + 2 >= maze.maze[0].length-1) {
                             continue;
                         }
                         if (maze.maze[r][c + 2] != 0) {
@@ -68,7 +68,7 @@ public class MyMazeGenerator extends AMazeGenerator {
                         break;
                     case 3: // Down
                         // Whether 2 cells down is out or not
-                        if (r + 2 >= maze.maze.length)
+                        if (r + 2 >= maze.maze.length-1)
                             continue;
                         if (maze.maze[r + 2][c] != 0) {
                             maze.maze[r + 2][c] = 0;
