@@ -14,7 +14,7 @@ public class Maze {
                 this.maze[i][j] = rand.nextInt(2);
         }
         int startx = rand.nextInt(row);
-        int starty = 0;
+        int starty;
         if(startx==(row-1) || startx == 0){
             starty = rand.nextInt(col);
         }
@@ -54,13 +54,59 @@ public class Maze {
         return this.end;
     }
     public void print() {
+        System.out.print("{");
         for (int i = 0; i < this.maze.length; i++) { //this equals to the row in our matrix.
-            for (int j = 0; j < this.maze[i].length; j++) { //this equals to the column in each row.
-                System.out.print(this.maze[i][j] + " ");
+            if(i==0)
+                System.out.print("{");
+            else
+                System.out.print(",{");
+            for (int j = 0; j < this.maze[i].length-1; j++) { //this equals to the column in each row.
+                if(this.start.getRowIndex() == i && this.start.getColumnIndex() == j){
+                    System.out.print("S,");
+                }
+                else if(this.end.getRowIndex() == i && this.end.getColumnIndex() == j){
+                    System.out.print("E,");
+                }
+                else {
+                    System.out.print(this.maze[i][j] + ",");
+                }
             }
-            System.out.println(); //change line on console as row comes to end in the matrix.
+            if(this.start.getRowIndex() == i && this.start.getColumnIndex() == this.maze[i].length-1){
+                System.out.print("S");
+            }
+            else if(this.end.getRowIndex() == i && this.end.getColumnIndex() == this.maze[i].length-1){
+                System.out.print("E");
+            }
+            else {
+                System.out.print(this.maze[i][this.maze[i].length-1]);
+            }
+            if(i==this.maze.length-1){
+                System.out.print("}}");
+                System.out.println();
+            }
+            else {
+                System.out.print("}");
+                System.out.println(); //change line on console as row comes to end in the matrix.
+            }
 
         }
+        //System.out.print("}");
+        /*System.out.print("{");
+        for (int i = 0; i < this.maze.length; i++) { //this equals to the row in our matrix.
+            for (int j = 0; j < this.maze[i].length; j++) { //this equals to the column in each row.
+                if(this.start.getRowIndex() == i && this.start.getColumnIndex() == j){
+                    System.out.print("S,");
+                }
+                if(this.end.getRowIndex() == i && this.end.getColumnIndex() == j){
+                    System.out.print("E,");
+                }
+
+                System.out.print(this.maze[i][j] + ",");
+            }
+        }
+        System.out.println();
+        System.out.print("}");*/
+
     }
 
 

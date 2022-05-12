@@ -1,8 +1,5 @@
 package algorithms.mazeGenerators;
 
-import algorithms.mazeGenerators.AMazeGenerator;
-import algorithms.mazeGenerators.Maze;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -114,7 +111,7 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @return Array containing 4 directions in random order
      */
     public Integer[] generateRandomDirections() {
-        ArrayList<Integer> randoms = new ArrayList<Integer>();
+        ArrayList<Integer> randoms = new ArrayList<>();
         for (int i = 0; i < 4; i++)
             randoms.add(i + 1);
         Collections.shuffle(randoms);

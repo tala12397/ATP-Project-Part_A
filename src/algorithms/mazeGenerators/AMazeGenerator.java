@@ -1,7 +1,5 @@
 package algorithms.mazeGenerators;
 
-import algorithms.mazeGenerators.Maze;
-
 public abstract class AMazeGenerator implements IMazeGenerator {
 
     abstract public Maze generate(int rows, int columns);

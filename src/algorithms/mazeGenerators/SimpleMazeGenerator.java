@@ -1,8 +1,5 @@
 package algorithms.mazeGenerators;
 
-import algorithms.mazeGenerators.AMazeGenerator;
-import algorithms.mazeGenerators.Maze;
-
 public class SimpleMazeGenerator extends AMazeGenerator {
     public SimpleMazeGenerator(){
 
