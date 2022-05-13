@@ -1,13 +1,15 @@
 package algorithms.mazeGenerators;
 
 public abstract class AMazeGenerator implements IMazeGenerator {
-
     abstract public Maze generate(int rows, int columns);
 
+
     public long measureAlgorithmTimeMillis(int rows, int columns){
-        long time = System.currentTimeMillis();
+        long before = System.currentTimeMillis();
         generate(rows, columns);
-        return System.currentTimeMillis() - time ;
+        long after = System.currentTimeMillis();
+        return after - before;
+
     }
 
 }

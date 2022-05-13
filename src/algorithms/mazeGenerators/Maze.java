@@ -13,10 +13,16 @@ public class Maze {
             for (int j = 0; j < col; j++)
                 this.maze[i][j] = rand.nextInt(2);
         }
+
         int startx = rand.nextInt(row);
+        while(startx%2==0){
+            startx = rand.nextInt(row);
+        }
         int starty;
-        if(startx==(row-1) || startx == 0){
+        if(startx==(row-1)){
             starty = rand.nextInt(col);
+            while(starty%2==1)
+                starty = rand.nextInt(col);
         }
         else{
             starty = rand.nextInt(2);
@@ -26,6 +32,9 @@ public class Maze {
         }
         this.start = new Position(startx,starty);
         int endx = rand.nextInt(row);
+        while(endx%2 ==0){
+            endx = rand.nextInt(row);
+        }
         int endy = 0;
         if(endx==(row-1) || endx == 0){
             endy = rand.nextInt(col);
