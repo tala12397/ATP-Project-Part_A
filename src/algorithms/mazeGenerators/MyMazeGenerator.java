@@ -8,17 +8,21 @@ public class MyMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int rows, int columns){
         Maze mymaze =  new Maze(rows,columns);
-        for(int i=0; i< mymaze.maze.length;i++){
-            for (int j=0; j<mymaze.maze[0].length;j++){
-                mymaze.maze[i][j] = 1;
+        if(mymaze.getStartPosition()== null)
+            return null;
+        for(int i=0; i< mymaze.get_length_row();i++){
+            for (int j=0; j<mymaze.get_length_col();j++){
+                mymaze.set_position(i,j,1);
             }
         }
-        mymaze.maze[mymaze.start.getRowIndex()][mymaze.start.getColumnIndex()] = 0;
+        mymaze.set_position(mymaze.start.getRowIndex(),mymaze.start.getColumnIndex(), 0);
         creation(mymaze.start.getRowIndex(),mymaze.start.getColumnIndex(), mymaze);
-        mymaze.maze[mymaze.end.getRowIndex()][mymaze.end.getColumnIndex()] = 0;
+        mymaze.set_position(mymaze.end.getRowIndex(),mymaze.end.getColumnIndex(), 0);
         return mymaze;
     }
     public void creation(int r, int c, Maze maze) {
+        if(maze == null)
+            return;
         Integer[] randDirs = generateRandomDirections();
         Stack<Position> positionStack = new Stack<>();
         positionStack.push(maze.start);
@@ -33,9 +37,9 @@ public class MyMazeGenerator extends AMazeGenerator {
                             continue;
                         }
 
-                        if (maze.maze[r - 2][c] != 0) {
-                            maze.maze[r - 2][c] = 0;
-                            maze.maze[r - 1][c] = 0;
+                        if (maze.get_position(r - 2,c) != 0) {
+                            maze.set_position(r - 2,c, 0);
+                            maze.set_position(r - 1,c, 0);
                             now = new Position(r-2,c);
                             positionStack.push(now);
                             r = now.getRowIndex();
@@ -46,12 +50,12 @@ public class MyMazeGenerator extends AMazeGenerator {
                         break;
                     case 2: // Right
                         // check if possible
-                        if (c + 2 >= maze.maze[0].length) {
+                        if (c + 2 >= maze.get_length_col()) {
                             continue;
                         }
-                        if (maze.maze[r][c + 2] != 0) {
-                            maze.maze[r][c + 2] = 0;
-                            maze.maze[r][c + 1] = 0;
+                        if (maze.get_position(r ,c+2) != 0) {
+                            maze.set_position(r,c + 2,0);
+                            maze.set_position(r,c + 1,0);
                             now = new Position(r,c+2);
                             positionStack.push(now);
                             r = now.getRowIndex();
@@ -62,12 +66,12 @@ public class MyMazeGenerator extends AMazeGenerator {
                         break;
                     case 3: // Down
                         // check if possible
-                        if (r + 2 >= maze.maze.length) {
+                        if (r + 2 >= maze.get_length_row()) {
                             continue;
                         }
-                        if (maze.maze[r + 2][c] != 0) {
-                            maze.maze[r + 2][c] = 0;
-                            maze.maze[r + 1][c] = 0;
+                        if (maze.get_position(r + 2,c) != 0) {
+                            maze.set_position(r + 2,c, 0);
+                            maze.set_position(r + 1,c, 0);
                             now = new Position(r+2,c);
                             positionStack.push(now);
                             r = now.getRowIndex();
@@ -79,9 +83,9 @@ public class MyMazeGenerator extends AMazeGenerator {
                         // check if possible
                         if (c - 2 < 0)
                             continue;
-                        if (maze.maze[r][c - 2] != 0) {
-                            maze.maze[r][c - 2] = 0;
-                            maze.maze[r][c - 1] = 0;
+                        if (maze.get_position(r ,c-2) != 0) {
+                            maze.set_position(r,c-2,0);
+                            maze.set_position(r,c-1,0);
                             now = new Position(r,c-2);
                             positionStack.push(now);
                             r = now.getRowIndex();

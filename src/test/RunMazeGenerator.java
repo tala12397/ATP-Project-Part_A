@@ -1,5 +1,10 @@
 package test;
 import algorithms.mazeGenerators.*;
+import algorithms.search.AState;
+import algorithms.search.MazeState;
+import algorithms.search.SearchableMaze;
+
+import java.util.ArrayList;
 
 public class RunMazeGenerator {
     public static void main(String[] args) {
@@ -22,5 +27,14 @@ public class RunMazeGenerator {
         System.out.println(String.format("Start Position: %s", startPosition)); // format "{row,column}"
 // prints the maze exit position
         System.out.println(String.format("Goal Position: %s", maze.getGoalPosition()));
+        AState tal = new MazeState(1,2,0);
+        SearchableMaze tall = new SearchableMaze(maze);
+        ArrayList<AState> ans = tall.getAllPossibleStates(tal);
+        for(int i=0;i< ans.size();i++){
+            System.out.print(ans.get(i).to_String());
+            System.out.print(",");
+
+        }
+
     }
 }

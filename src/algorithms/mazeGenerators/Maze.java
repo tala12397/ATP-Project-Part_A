@@ -2,11 +2,18 @@ package algorithms.mazeGenerators;
 
 import java.util.Random;
 public class Maze {
-    int [][] maze;
+    private int [][] maze;
     Position start;
     Position end;
 
+    /**
+     *
+     * @param row
+     * @param col
+     */
     public Maze(int row, int col){
+        if(row == 0 || col == 0)
+            return;
         Random rand = new Random();
         this.maze = new int[row][col];
         for(int i=0;i<row;i++) {
@@ -48,6 +55,8 @@ public class Maze {
 
     }
     public Maze(int row, int col, int num){
+        if(row == 0 || col == 0)
+            return;
         this.maze = new int[row][col];
         for(int i=0;i<row;i++) {
             for (int j = 0; j < col; j++)
@@ -62,14 +71,28 @@ public class Maze {
     public Position getGoalPosition(){
         return this.end;
     }
+    public int get_position(int r, int c){
+        return this.maze[r][c];
+    }
+    public void set_position(int r, int c, int num_to_Set){
+        if(num_to_Set == 0 || num_to_Set==1)
+            this.maze[r][c] = num_to_Set;
+    }
+    public int get_length_row(){
+        return this.maze.length;
+    }
+    public int get_length_col(){
+        return this.maze[0].length;
+    }
+
     public void print() {
         System.out.print("{");
-        for (int i = 0; i < this.maze.length; i++) { //this equals to the row in our matrix.
+        for (int i = 0; i < this.maze.length; i++) {
             if(i==0)
                 System.out.print("{");
             else
                 System.out.print(",{");
-            for (int j = 0; j < this.maze[i].length-1; j++) { //this equals to the column in each row.
+            for (int j = 0; j < this.maze[i].length-1; j++) {
                 if(this.start.getRowIndex() == i && this.start.getColumnIndex() == j){
                     System.out.print("S,");
                 }
@@ -95,26 +118,11 @@ public class Maze {
             }
             else {
                 System.out.print("}");
-                System.out.println(); //change line on console as row comes to end in the matrix.
+                System.out.println();
             }
 
         }
-        //System.out.print("}");
-        /*System.out.print("{");
-        for (int i = 0; i < this.maze.length; i++) { //this equals to the row in our matrix.
-            for (int j = 0; j < this.maze[i].length; j++) { //this equals to the column in each row.
-                if(this.start.getRowIndex() == i && this.start.getColumnIndex() == j){
-                    System.out.print("S,");
-                }
-                if(this.end.getRowIndex() == i && this.end.getColumnIndex() == j){
-                    System.out.print("E,");
-                }
 
-                System.out.print(this.maze[i][j] + ",");
-            }
-        }
-        System.out.println();
-        System.out.print("}");*/
 
     }
 
