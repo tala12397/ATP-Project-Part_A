@@ -1,17 +1,33 @@
 package algorithms.search;
+import algorithms.mazeGenerators.Maze;
+
 import java.util.*;
 
+/**
+ * solving a maze class according to BFS algorithm.
+ */
 public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     public String getName(){
         return "BreadthFirstSearch";
     }
+    /**
+     * solving a maze with bfs function
+     * @param iS is the object which searching on it.
+     * @return the solution of the search.
+     */
     public Solution solve(ISearchable iS){
         if(iS == null || iS.getStartState() == null)
-            return null;
+            iS = new SearchableMaze(new Maze(30,30));
         this.sol = bfs(iS, iS.getStartState());
         return this.sol;
     }
+    /**
+     * the main function which actually solving the problem
+     * @param iS is the object which searching on it.
+     * @param curr is the current situation, the state state for start.
+     * @return the final solution according to the algorithm.
+     */
     private Solution bfs(ISearchable iS, AState curr){
         if(iS==null || curr == null)
             return null;
@@ -43,6 +59,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
         AState pointer = n;
         Solution ans = new Solution();
+        /**
+         * restore the path
+         */
         while (!pointer.equals(iS.getStartState())) {
             ans.add_to_solution(pointer);
             pointer = pointer.get_came_from();

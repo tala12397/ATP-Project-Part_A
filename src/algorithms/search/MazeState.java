@@ -2,15 +2,31 @@ package algorithms.search;
 
 import java.util.Objects;
 
+/**
+ * a class who representing a specific state for solving a maze
+ */
 public class MazeState extends AState{
     private int row;
     private int col;
 
+    /**
+     * a constructor
+     * @param r the row index
+     * @param c the columns index
+     * @param s the string value of the state
+     */
     public MazeState(int r, int c, String s){
         super(s);
         this.row = r;
         this.col = c;
     }
+
+    /**
+     * a constructor
+     * @param r the row index
+     * @param c the columns index
+     * @param cost the cost of a step to the cell.
+     */
     public MazeState(int r, int c, int cost){
         super("");
         this.row = r;
@@ -18,7 +34,11 @@ public class MazeState extends AState{
         this.cost = cost;
     }
 
-
+    /**
+     * equals between who MazeState objects.
+     * @param o the parameter to compare
+     * @return true if it the values are equals. else false.
+     */
     @Override
     public boolean equals(Object o) {
 
@@ -39,7 +59,7 @@ public class MazeState extends AState{
         return this.col;
     }
     @Override
-    public String to_String(){
+    public String toString(){
         return "{" + this.row + "," + this.col + "}";
     }
 }

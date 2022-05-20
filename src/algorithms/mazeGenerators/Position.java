@@ -1,5 +1,8 @@
 package algorithms.mazeGenerators;
 
+/**
+ * class which represent a cell in the maze
+ */
 public class Position {
         private int rows;
         private int columns;

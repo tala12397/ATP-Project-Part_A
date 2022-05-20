@@ -4,6 +4,9 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 
+/**
+ * an interface for searching problem
+ */
 public interface ISearchable {
     AState getStartState();
     AState getGoalState();

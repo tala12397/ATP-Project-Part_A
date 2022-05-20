@@ -5,12 +5,20 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 
+/**
+ * a class which used to solve a maze
+ */
 public class SearchableMaze implements ISearchable{
     public Maze my_maze;
 
+    /**
+     * a constructor
+     * @param new_maze is the maze to search
+     */
     public SearchableMaze(Maze new_maze){
         if (new_maze == null)
-            return;
+            this.my_maze = new Maze(30,30);
+        else
         this.my_maze = new_maze;
     }
     public int get_rows_size(){
@@ -32,14 +40,18 @@ public class SearchableMaze implements ISearchable{
         MazeState end_mazestate = new MazeState(end.getRowIndex(),end.getColumnIndex(),0);
         return end_mazestate;
     }
+
+    /**
+     * this function returns all legal steps from a specific Astate
+     * @param s the specific Astate
+     * @return ArrayList of all the Astate
+     */
     public ArrayList<AState> getAllPossibleStates(AState s){
         if(s == null)
             return null;
         ArrayList<AState> ans = new ArrayList<>();
         int r = s.getRowIndex();
         int c = s.getColumnIndex();
-        int flag = 0;
-        int flag_2 = 0;
         if(r == 0){
             if(c==0){
                 if(this.my_maze.get_position(r,c+1) == 0) //right
@@ -77,27 +89,27 @@ public class SearchableMaze implements ISearchable{
 
                 if(this.my_maze.get_position(r-1,c) == 0) { //up
                     ans.add(new MazeState(r - 1, c, 10));
-                    //flag = 1;
+
                 }
                 if((this.my_maze.get_position(r-1,c) == 0 && this.my_maze.get_position(r-1,c+1) == 0)||(this.my_maze.get_position(r,c+1) == 0 && this.my_maze.get_position(r-1,c+1) == 0) ) //right-up
                     ans.add(new MazeState(r-1,c+1, 15));
 
                 if(this.my_maze.get_position(r,c+1) == 0) { //right
                     ans.add(new MazeState(r, c + 1, 10));
-                    //flag = 1;
+
                 }
 
 
             }
             else if(c == my_maze.get_length_col()-1){
-                //flag = 0;
+
                 if(this.my_maze.get_position(r-1,c) == 0) {//up
                     ans.add(new MazeState(r - 1, c,10));
-                    //flag = 1;
+
                 }
                 if(this.my_maze.get_position(r,c-1) == 0) { //left
                     ans.add(new MazeState(r, c - 1,10));
-                    flag = 1;
+
                 }
 
                 if((this.my_maze.get_position(r-1,c) == 0 && this.my_maze.get_position(r-1,c-1) == 0)||(this.my_maze.get_position(r,c-1) == 0 && this.my_maze.get_position(r-1,c-1) == 0) ) //left-up

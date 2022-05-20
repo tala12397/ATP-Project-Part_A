@@ -3,8 +3,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
+/**
+ * class which generate a random maze
+ */
 public class MyMazeGenerator extends AMazeGenerator {
 
+    /**
+     * generate the maze with creation function
+     * @param rows the number of the rows in the maze
+     * @param columns the number of the columns in the maze
+     * @return a random maze
+     */
     @Override
     public Maze generate(int rows, int columns){
         Maze mymaze =  new Maze(rows,columns);
@@ -20,6 +29,13 @@ public class MyMazeGenerator extends AMazeGenerator {
         mymaze.set_position(mymaze.end.getRowIndex(),mymaze.end.getColumnIndex(), 0);
         return mymaze;
     }
+
+    /**
+     * the main function of this class. generate a random maze
+     * @param r the number of the rows
+     * @param c the number of the columns
+     * @param maze a new maze
+     */
     public void creation(int r, int c, Maze maze) {
         if(maze == null)
             return;
@@ -108,7 +124,10 @@ public class MyMazeGenerator extends AMazeGenerator {
     }
 
 
-    //random directions
+    /**
+     * function who randomize a direction
+     * @return a list of random directions
+     */
     public Integer[] generateRandomDirections() {
         ArrayList<Integer> randoms = new ArrayList<>();
         for (int i = 0; i < 4; i++)

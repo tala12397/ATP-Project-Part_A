@@ -1,5 +1,8 @@
 package algorithms.search;
 
+/**
+ * abstract class for solving the problem
+ */
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm{
     protected int num_of_nude;
     Solution sol;

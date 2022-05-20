@@ -1,19 +1,25 @@
 package algorithms.mazeGenerators;
 
 import java.util.Random;
+
+/**
+ * the object maze itself
+ */
 public class Maze {
     private int [][] maze;
     Position start;
     Position end;
 
     /**
-     *
-     * @param row
-     * @param col
+     * class constructor
+     * @param row the number of the rows in the maze
+     * @param col the number of the columns in the maze
      */
     public Maze(int row, int col){
-        if(row == 0 || col == 0)
-            return;
+        if(row == 0 || col == 0){
+            row = 30;
+            col = 30;
+        }
         Random rand = new Random();
         this.maze = new int[row][col];
         for(int i=0;i<row;i++) {
@@ -54,9 +60,18 @@ public class Maze {
         this.maze[endx][endy] = 0;
 
     }
+
+    /**
+     * class constructor
+     * @param row the number of the rows in the maze
+     * @param col the number of the columns in the maze
+     * @param num is the number of all the cells
+     */
     public Maze(int row, int col, int num){
-        if(row == 0 || col == 0)
-            return;
+        if(row == 0 || col == 0){
+            row = 30;
+            col = 30;
+        }
         this.maze = new int[row][col];
         for(int i=0;i<row;i++) {
             for (int j = 0; j < col; j++)

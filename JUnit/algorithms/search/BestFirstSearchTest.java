@@ -20,8 +20,8 @@ class BestFirstSearchTest {
         SearchableMaze iSearchable_empty = new SearchableMaze(empty);
         BestFirstSearch best_fs = new BestFirstSearch();
         Solution solution_empty = best_fs.solve(iSearchable_empty);
-        Assertions.assertEquals(null, best_fs.solve(iSearchable_null));
-        Assertions.assertEquals(null,solution_empty );
+        Assertions.assertNotEquals(null, best_fs.solve(iSearchable_null));
+        Assertions.assertNotEquals(null,solution_empty);
         SearchableMaze iSearchable_normal = new SearchableMaze(new Maze(1000,1000));
         Solution normal_sol = best_fs.solve(iSearchable_normal);
         Assertions.assertNotEquals(null, normal_sol);

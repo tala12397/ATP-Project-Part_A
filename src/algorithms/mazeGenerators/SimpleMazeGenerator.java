@@ -1,7 +1,16 @@
 package algorithms.mazeGenerators;
 
+/**
+ * a class which generate a simple maze with simple algorithm
+ */
 public class SimpleMazeGenerator extends AMazeGenerator {
 
+    /**
+     * the main function in the class. generate the maze.
+     * @param rows the number of the rows in the maze
+     * @param columns the number of the columns in the maze
+     * @return a new maze.
+     */
     public Maze generate(int rows, int columns){
         Maze simplemaze = new Maze(rows,columns);
         if(simplemaze.start.getRowIndex()<simplemaze.end.getRowIndex()){
